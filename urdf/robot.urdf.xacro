@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<robot name="car" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:property name="PI" value="3.1415926535897931"/>
+
+    <!--  Import the wheels  -->
+    <xacro:include filename="$(find autonomous_description)/urdf/wheels.urdf.xacro"/>
+
+    <!-- Import base element with the chassis -->
+    <xacro:include filename="$(find autonomous_description)/urdf/car_base.urdf.xacro"/> 
+
+    <!-- Import all available sensors 
+    <xacro:include filename="$(find autonomous_description)/sensors/all_sensors.urdf.xacro" /> -->
+
+    <!--  Include the plugins  
+    <xacro:include filename="$(find autonomous_description)/urdf/car_plugins.gazebo.xacro"/> -->
+
+    <!-- *************** -->
+    <!-- Robots Elements -->
+    <!-- *************** -->
+    <!-- Chassis of the car -->
+    <xacro:car_base chassis_mesh="file://meshes/sisu-20d.dae"/> 
+
+    <!-- Wheels -->
+    <xacro:wheels chassis_width="1.6" wheelbase="1.580"></xacro:wheels> 
+
+    
+
+    <!-- *********************************************** -->
+    <!--                 MAIN SENSORS                    -->
+    <!-- *********************************************** -->
+
+    <!--     LOCATIONS: (XYZ)
+    IMU: 0.0 0.0 0.170
+    GPS: -0.110 0.0 0.9
+    LIDAR: 1.700 0.0 -0.150
+    STEREO CAM: -0.110 0.0 0.800 -->
+<!--
+    <xacro:sensor_imu parent="base_footprint" prefix="imu">
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+    </xacro:sensor_imu>
+
+    <xacro:sensor_gps parent="base_footprint" prefix="gps">
+        <origin xyz="0.0 0.0 0.4" rpy="0 0 0"/>
+    </xacro:sensor_gps>
+
+    <xacro:VLP-16R parent="base_footprint" name="velodyne" topic="/velodyne_points" hz="10" samples="800" active="$(arg simulate_perception)">
+        <origin xyz="-0.15 0.0 0.79" rpy="0 ${1*M_PI/180.0} 0"/>
+    </xacro:VLP-16R>
+
+    <xacro:zed_camera parent="base_footprint" prefix="zed" active="$(arg simulate_perception)">
+        <origin xyz="-0.08 0.0 0.76" rpy="0 0 0"/>
+    </xacro:zed_camera>
+-->
+</robot>
